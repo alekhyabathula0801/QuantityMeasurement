@@ -1,11 +1,19 @@
 package quantitymeasurement;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static quantitymeasurement.QuantityMeasurementException.ExceptionType.ENTERED_NULL;
 
 public class QuantityMeasurementTest {
+
+    QuantityMeasurement quantityMeasurement;
+
+    @Before
+    public void setUp() throws Exception {
+        quantityMeasurement = new QuantityMeasurement();
+    }
 
     @Test
     public void givenTwoQuantitiesOfFeet_whenEqual_shouldReturnEqual() {
@@ -74,7 +82,6 @@ public class QuantityMeasurementTest {
     @Test
     public void givenQuantities12InchAnd1Feet_whenEqual_shouldReturnTrue() {
         try {
-            QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(12.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
             boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
@@ -87,7 +94,6 @@ public class QuantityMeasurementTest {
     @Test
     public void given1InchAnd1Feet_whenNotEqual_shouldReturnFalse() {
         try {
-            QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
             boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
@@ -100,7 +106,6 @@ public class QuantityMeasurementTest {
     @Test
     public void givenQuantities1InchAnd12Feet_whenNotEqual_shouldReturnTrue() {
         try {
-            QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(12.0, Unit.FEET);
             boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
@@ -113,9 +118,80 @@ public class QuantityMeasurementTest {
     @Test
     public void given1FeetAnd1Inch_whenNotEqual_shouldReturnFalse() {
         try {
-            QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.FEET);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.INCH);
+            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
+            assertFalse(results);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given3FeetAnd1Yard_whenEqual_shouldReturnFalse() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(3.0, Unit.FEET);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
+            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
+            assertTrue(results);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities36InchAnd1Yard_whenEqual_shouldReturnTrue() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(36.0, Unit.INCH);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
+            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
+            assertTrue(results);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1YardAnd3Feet_whenEqual_shouldReturnFalse() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.YARD);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(3.0, Unit.FEET);
+            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
+            assertTrue(results);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1YardAnd36Inch_whenEqual_shouldReturnTrue() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.YARD);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(36.0, Unit.INCH);
+            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
+            assertTrue(results);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1YardAnd1Feet_whenNotEqual_shouldReturnFalse() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.YARD);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
+            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
+            assertFalse(results);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1InchAnd1Yard_whenNotEqual_shouldReturnTrue() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
             boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
             assertFalse(results);
         } catch (QuantityMeasurementException e) {

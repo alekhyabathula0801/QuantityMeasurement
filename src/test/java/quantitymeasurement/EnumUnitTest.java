@@ -18,4 +18,10 @@ public class EnumUnitTest {
         assertEquals(1,value,0.0);
     }
 
+    @Test
+    public void givenYardUnit_shouldReturnInchValue() {
+        double value = Unit.YARD.inchConversionValue;
+        assertEquals(36,value,0.0);
+    }
+
 }
