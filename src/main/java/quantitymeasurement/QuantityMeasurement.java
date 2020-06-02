@@ -18,8 +18,8 @@ public class QuantityMeasurement {
     }
 
     public boolean compare(QuantityMeasurement quantityMeasurement1, QuantityMeasurement quantityMeasurement2) {
-        Double value1 = quantityMeasurement1.value* quantityMeasurement1.unit.inchConversionValue;
-        Double value2 = quantityMeasurement2.value* quantityMeasurement2.unit.inchConversionValue;
+        Double value1 = quantityMeasurement1.value* quantityMeasurement1.unit.getInchConversionValue();
+        Double value2 = quantityMeasurement2.value* quantityMeasurement2.unit.getInchConversionValue();
         if(value1.equals(value2))
             return true;
         return false;
