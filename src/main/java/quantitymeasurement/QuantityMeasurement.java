@@ -7,22 +7,11 @@ public class QuantityMeasurement {
 
     public QuantityMeasurement(Double value, Unit unit) throws QuantityMeasurementException {
         try {
-            this.value = value;
             this.unit = unit;
+            this.value = value*unit.getInchConversionValue();
         } catch (NullPointerException e) {
             throw new QuantityMeasurementException("Entered Null", QuantityMeasurementException.ExceptionType.ENTERED_NULL);
         }
-    }
-
-    public QuantityMeasurement() {
-    }
-
-    public boolean compare(QuantityMeasurement quantityMeasurement1, QuantityMeasurement quantityMeasurement2) {
-        Double value1 = quantityMeasurement1.value* quantityMeasurement1.unit.getInchConversionValue();
-        Double value2 = quantityMeasurement2.value* quantityMeasurement2.unit.getInchConversionValue();
-        if(value1.equals(value2))
-            return true;
-        return false;
     }
 
     @Override
@@ -30,8 +19,7 @@ public class QuantityMeasurement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement quantityMeasurement = (QuantityMeasurement) o;
-        return Double.compare(quantityMeasurement.value, value) == 0 &&
-                unit == quantityMeasurement.unit;
+        return Double.compare(quantityMeasurement.value, value) == 0 ;
     }
 
 }

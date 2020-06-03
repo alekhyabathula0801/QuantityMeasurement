@@ -12,4 +12,5 @@ public enum Unit {
     public Double getInchConversionValue() {
         return inchConversionValue;
     }
+
 }

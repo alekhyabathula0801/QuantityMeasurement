@@ -1,19 +1,11 @@
 package quantitymeasurement;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static quantitymeasurement.QuantityMeasurementException.ExceptionType.ENTERED_NULL;
 
 public class QuantityMeasurementTest {
-
-    QuantityMeasurement quantityMeasurement;
-
-    @Before
-    public void setUp() throws Exception {
-        quantityMeasurement = new QuantityMeasurement();
-    }
 
     @Test
     public void givenTwoQuantitiesOfFeet_whenEqual_shouldReturnEqual() {
@@ -84,8 +76,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(12.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertTrue(results);
+            assertEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -96,8 +87,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertFalse(results);
+            assertNotEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -108,8 +98,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(12.0, Unit.FEET);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertFalse(results);
+            assertNotEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -120,8 +109,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.FEET);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.INCH);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertFalse(results);
+            assertNotEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -132,8 +120,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(3.0, Unit.FEET);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertTrue(results);
+            assertEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -144,8 +131,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(36.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertTrue(results);
+            assertEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -156,8 +142,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.YARD);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(3.0, Unit.FEET);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertTrue(results);
+            assertEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -168,8 +153,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.YARD);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(36.0, Unit.INCH);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertTrue(results);
+            assertEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -180,8 +164,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.YARD);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertFalse(results);
+            assertNotEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -192,8 +175,7 @@ public class QuantityMeasurementTest {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
-            boolean results = quantityMeasurement.compare(quantityMeasurement1, quantityMeasurement2);
-            assertFalse(results);
+            assertNotEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
