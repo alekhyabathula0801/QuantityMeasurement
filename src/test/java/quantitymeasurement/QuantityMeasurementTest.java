@@ -1,5 +1,6 @@
 package quantitymeasurement;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,6 +14,16 @@ public class QuantityMeasurementTest {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(0.0, Unit.FEET);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(0.0, Unit.FEET);
             assertEquals(quantityMeasurement1, quantityMeasurement2);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenSameReferenceOfFeet_whenEqual_shouldReturnEqual() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.FEET);
+            assertEquals(quantityMeasurement1, quantityMeasurement1);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -88,6 +99,17 @@ public class QuantityMeasurementTest {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.FEET);
             assertNotEquals(quantityMeasurement1,quantityMeasurement2);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given0InchAnd0Feet_whenEqual_shouldReturnTrue() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(0.0, Unit.INCH);
+            QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(0.0, Unit.FEET);
+            assertEquals(quantityMeasurement1,quantityMeasurement2);
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }
@@ -171,11 +193,102 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenQuantities1InchAnd1Yard_whenNotEqual_shouldReturnTrue() {
+    public void givenQuantities1InchAnd1Yard_whenNotEqual_shouldReturnFalse() {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1.0, Unit.INCH);
             QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(1.0, Unit.YARD);
             assertNotEquals(quantityMeasurement1,quantityMeasurement2);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities2InchAnd1Yard_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(2.0, Unit.INCH),new QuantityMeasurement(1.0, Unit.YARD));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1InchAnd1Centimetre_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.INCH),new QuantityMeasurement(1.0, Unit.CENTIMETRE));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities2InchAnd5Centimetre_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(2.0, Unit.INCH),new QuantityMeasurement(5.08, Unit.CENTIMETRE));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesYardAndCentimetreValues_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.01, Unit.YARD),new QuantityMeasurement(1.0, Unit.CENTIMETRE));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesFootAndCentimetreValues_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.49, Unit.FEET),new QuantityMeasurement(15.0, Unit.CENTIMETRE));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities5CentimetreAnd2Inch_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(5.08, Unit.CENTIMETRE),new QuantityMeasurement(2.0, Unit.INCH));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1CentimetreAnd2Inch_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.CENTIMETRE),new QuantityMeasurement(2.0, Unit.INCH));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void givenQuantities1CentimetreAnd2Feet_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.CENTIMETRE),new QuantityMeasurement(2.0, Unit.FEET));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1CentimetreAnd1Yard_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.CENTIMETRE),new QuantityMeasurement(1.0, Unit.YARD));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities0CentimetreAnd0Inch_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.CENTIMETRE),new QuantityMeasurement(0.0, Unit.FEET));
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
         }

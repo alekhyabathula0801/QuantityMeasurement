@@ -2,12 +2,10 @@ package quantitymeasurement;
 
 public class QuantityMeasurement {
 
-    Unit unit;
-    Double value;
+    double value;
 
-    public QuantityMeasurement(Double value, Unit unit) throws QuantityMeasurementException {
+    public QuantityMeasurement(Double value, Unit unit) {
         try {
-            this.unit = unit;
             this.value = value*unit.getInchConversionValue();
         } catch (NullPointerException e) {
             throw new QuantityMeasurementException("Entered Null", QuantityMeasurementException.ExceptionType.ENTERED_NULL);
@@ -19,7 +17,7 @@ public class QuantityMeasurement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement quantityMeasurement = (QuantityMeasurement) o;
-        return Double.compare(quantityMeasurement.value, value) == 0 ;
+        return Double.compare(Math.round(quantityMeasurement.value*100)/100, Math.round(100*value)/100) == 0;
     }
 
 }
