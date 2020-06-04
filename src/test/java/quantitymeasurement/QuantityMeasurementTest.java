@@ -294,4 +294,58 @@ public class QuantityMeasurementTest {
         }
     }
 
+    @Test
+    public void givenQuantities0LitreAnd0Gallon_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.LITRE),new QuantityMeasurement(0.0, Unit.GALLON));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities0LitreAnd0Inch_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(0.0, Unit.LITRE),new QuantityMeasurement(0.0, Unit.INCH));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1LitreAnd1Inch_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.LITRE),new QuantityMeasurement(1.0, Unit.INCH));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesLitreAndGallon_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(3.78, Unit.LITRE),new QuantityMeasurement(1.0, Unit.GALLON));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1LitreAnd1000Millilitre_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(1.0, Unit.LITRE),new QuantityMeasurement(1000.0, Unit.MILLILITRE));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1LitreAnd1Millilitre_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.LITRE),new QuantityMeasurement(1.0, Unit.MILLILITRE));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
