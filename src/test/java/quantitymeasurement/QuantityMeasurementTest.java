@@ -516,4 +516,28 @@ public class QuantityMeasurementTest {
         }
     }
 
+    @Test
+    public void givenQuantities1GramAnd1Tonne_whenAdded_shouldReturnResultsInGram() {
+        double result = quantityMeasurement.add(new QuantityMeasurement(1.0,Unit.GRAM),new QuantityMeasurement(1.0,Unit.TONNE),Unit.GRAM);
+        assertEquals(1000001,result,0.0);
+    }
+
+    @Test
+    public void givenQuantities1GramAnd1Tonne_whenAdded_shouldReturnResultsInTonne() {
+        double result = quantityMeasurement.add(new QuantityMeasurement(1.0,Unit.GRAM),new QuantityMeasurement(1.0,Unit.TONNE),Unit.TONNE);
+        assertEquals(1.000001,result,0.0);
+    }
+
+    @Test
+    public void givenQuantities1000GramAnd1Tonne_whenAdded_shouldReturnResultsInKilogram() {
+        double result = quantityMeasurement.add(new QuantityMeasurement(1000.0,Unit.GRAM),new QuantityMeasurement(1.0,Unit.TONNE),Unit.KILOGRAM);
+        assertEquals(1001,result,0.0);
+    }
+
+    @Test
+    public void givenQuantities1000GramAnd1Kilogram_whenAdded_shouldReturnResultsInKilogram() {
+        double result = quantityMeasurement.add(new QuantityMeasurement(1000.0,Unit.GRAM),new QuantityMeasurement(1.0,Unit.KILOGRAM),Unit.KILOGRAM);
+        assertEquals(2,result,0.0);
+    }
+
 }
