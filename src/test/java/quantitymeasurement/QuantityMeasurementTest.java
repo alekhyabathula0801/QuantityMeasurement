@@ -540,4 +540,103 @@ public class QuantityMeasurementTest {
         assertEquals(2,result,0.0);
     }
 
+    @Test
+    public void givenQuantities0KelvinAnd0Kelvin_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.KELVIN),new QuantityMeasurement(0.0, Unit.KELVIN));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantities1KelvinAnd1Kelvin_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(1.0, Unit.KELVIN),new QuantityMeasurement(1.0, Unit.KELVIN));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOfKelvinAndCelcius_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.KELVIN),new QuantityMeasurement(-273.15, Unit.CELCIUS));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOfCelciusAndKelvin_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.CELCIUS),new QuantityMeasurement(273.15, Unit.KELVIN));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1CelciusAndQuantityOfKelvin_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(1.0, Unit.CELCIUS),new QuantityMeasurement(274.15, Unit.KELVIN));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOfCelciusAndKelvin_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(1.0, Unit.CELCIUS),new QuantityMeasurement(1.0, Unit.KELVIN));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOfKelvinAndFahrenheit_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.KELVIN),new QuantityMeasurement(-459.67, Unit.FAHRENHEIT));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOfCelciusAndFahrenheit_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(0.0, Unit.CELCIUS),new QuantityMeasurement(32.0, Unit.FAHRENHEIT));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOfFahrenheitAndCelcius_whenEqual_shouldReturnTrue() {
+        try {
+            assertEquals(new QuantityMeasurement(100.0, Unit.CELCIUS),new QuantityMeasurement(212.0, Unit.FAHRENHEIT));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOf0FahrenheitAnd0Celcius_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(0.0, Unit.CELCIUS),new QuantityMeasurement(0.0, Unit.FAHRENHEIT));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOf0KelvinAnd0Celcius_whenNotEqual_shouldReturnFalse() {
+        try {
+            assertNotEquals(new QuantityMeasurement(0.0, Unit.KELVIN),new QuantityMeasurement(0.0, Unit.FAHRENHEIT));
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

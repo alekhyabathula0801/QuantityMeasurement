@@ -9,7 +9,7 @@ public class QuantityMeasurement {
         if(value == null)
             throw new QuantityMeasurementException("Entered Null", QuantityMeasurementException.ExceptionType.ENTERED_NULL);
         this.unit = unit;
-        this.value = value*unit.getConversionValue();
+        this.value = unit.getConvertedValue(value,unit);
     }
 
     public QuantityMeasurement() {
