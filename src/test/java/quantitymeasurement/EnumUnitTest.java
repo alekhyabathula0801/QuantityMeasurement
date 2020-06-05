@@ -7,45 +7,81 @@ import static org.junit.Assert.assertEquals;
 public class EnumUnitTest {
 
     @Test
-    public void givenFeetUnit_shouldReturnInchValue() {
+    public void givenFeetUnit_shouldReturnInMillimetreValue() {
         double value = Unit.FEET.getConversionValue();
-        assertEquals(12,value,0.0);
+        assertEquals(304.8,value,0.0);
     }
 
     @Test
-    public void givenInchUnit_shouldReturnInchValue() {
+    public void givenInchUnit_shouldReturnInMillimetreValue() {
         double value = Unit.INCH.getConversionValue();
-        assertEquals(1,value,0.0);
+        assertEquals(25.4,value,0.0);
     }
 
     @Test
-    public void givenYardUnit_shouldReturnInchValue() {
+    public void givenYardUnit_shouldReturnInMillimetreValue() {
         double value = Unit.YARD.getConversionValue();
-        assertEquals(36,value,0.0);
+        assertEquals(914.4,value,0.0);
     }
 
     @Test
-    public void givenCentimetreUnit_shouldReturnInchValue() {
+    public void givenCentimetreUnit_shouldReturnInMillimetreValue() {
         double value = Unit.CENTIMETRE.getConversionValue();
-        assertEquals(0.39,value,0.01);
+        assertEquals(10.0,value,0.0);
     }
 
     @Test
-    public void givenLitreUnit_shouldReturnLitreValue() {
+    public void givenMetreUnit_shouldReturnInMillimetreValue() {
+        double value = Unit.METRE.getConversionValue();
+        assertEquals(1000.0,value,0.0);
+    }
+
+    @Test
+    public void givenKilometreUnit_shouldReturnInMillimetreValue() {
+        double value = Unit.KILOMETRE.getConversionValue();
+        assertEquals(1000000.0,value,0.0);
+    }
+
+    @Test
+    public void givenMillimetreUnit_shouldReturnInMillimetreValue() {
+        double value = Unit.MILLIMETRE.getConversionValue();
+        assertEquals(1.0,value,0.0);
+    }
+
+    @Test
+    public void givenLitreUnit_shouldReturnMillilitreValue() {
         double value = Unit.LITRE.getConversionValue();
-        assertEquals(1,value,0.0);
+        assertEquals(1000,value,0.0);
     }
 
     @Test
-    public void givenGallonUnit_shouldReturnLitreValue() {
+    public void givenGallonUnit_shouldReturnMillilitreValue() {
         double value = Unit.GALLON.getConversionValue();
-        assertEquals(3.78,value,0.0);
+        assertEquals(3785.41,value,0.0);
     }
 
     @Test
     public void givenMilliLitreUnit_shouldReturnLitreValue() {
         double value = Unit.MILLILITRE.getConversionValue();
-        assertEquals(0.001,value,0.0);
+        assertEquals(1,value,0.0);
+    }
+
+    @Test
+    public void givenGramUnit_shouldReturnGramValue() {
+        double value = Unit.GRAM.getConversionValue();
+        assertEquals(1,value,0.0);
+    }
+
+    @Test
+    public void givenKilogramUnit_shouldReturnGramValue() {
+        double value = Unit.KILOGRAM.getConversionValue();
+        assertEquals(1000,value,0.0);
+    }
+
+    @Test
+    public void givenTonneUnit_shouldReturnGramValue() {
+        double value = Unit.TONNE.getConversionValue();
+        assertEquals(1000000,value,0.0);
     }
 
 }

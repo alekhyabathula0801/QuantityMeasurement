@@ -1,6 +1,5 @@
 package quantitymeasurement;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -431,7 +430,7 @@ public class QuantityMeasurementTest {
         try {
             quantityMeasurement.add(new QuantityMeasurement(1.0, Unit.FEET), new QuantityMeasurement(1.0, Unit.LITRE),Unit.INCH);
         } catch (QuantityMeasurementException e) {
-            assertEquals(QuantityMeasurementException.ExceptionType.CANNOT_ADD_THESE_MEASUREMENTS,e.type);
+            assertEquals(QuantityMeasurementException.ExceptionType.CANNOT_ADD_GIVEN_MEASUREMENTS,e.type);
         }
     }
 
