@@ -18,10 +18,10 @@ public class QuantityMeasurement {
     public double add(QuantityMeasurement quantityMeasurement1, QuantityMeasurement quantityMeasurement2, Unit unit) {
         if(quantityMeasurement1.unit.measurementType != quantityMeasurement2.unit.measurementType)
             throw new QuantityMeasurementException("Cannot add these measurements",
-                    QuantityMeasurementException.ExceptionType.CANNOT_ADD_THESE_MEASUREMENTS);
+                                                   QuantityMeasurementException.ExceptionType.CANNOT_ADD_THESE_MEASUREMENTS);
         if(unit.measurementType != quantityMeasurement2.unit.measurementType)
             throw new QuantityMeasurementException("Cannot convert to given Unit",
-                    QuantityMeasurementException.ExceptionType.CANNOT_CONVERT_TO_GIVEN_UNIT);
+                                                   QuantityMeasurementException.ExceptionType.CANNOT_CONVERT_TO_GIVEN_UNIT);
         return (quantityMeasurement1.value + quantityMeasurement2.value)/unit.getConversionValue();
     }
 
