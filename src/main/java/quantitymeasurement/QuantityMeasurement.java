@@ -22,6 +22,9 @@ public class QuantityMeasurement {
         if(unit.measurementType != quantityMeasurement2.unit.measurementType)
             throw new QuantityMeasurementException("Cannot convert to given Unit",
                                                    QuantityMeasurementException.ExceptionType.CANNOT_CONVERT_TO_GIVEN_UNIT);
+        if(quantityMeasurement2.unit.measurementType.equals("TEMPERATURE"))
+            throw new QuantityMeasurementException("Cannot convert to given Unit",
+                                                   QuantityMeasurementException.ExceptionType.CANNOT_ADD_TEMPERATURE_MEASUREMENTS);
         return (quantityMeasurement1.value + quantityMeasurement2.value)/unit.getConversionValue();
     }
 

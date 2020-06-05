@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static quantitymeasurement.QuantityMeasurementException.ExceptionType.CANNOT_ADD_TEMPERATURE_MEASUREMENTS;
 import static quantitymeasurement.QuantityMeasurementException.ExceptionType.ENTERED_NULL;
 
 public class QuantityMeasurementTest {
@@ -635,6 +636,15 @@ public class QuantityMeasurementTest {
             assertNotEquals(new QuantityMeasurement(0.0, Unit.KELVIN),new QuantityMeasurement(0.0, Unit.FAHRENHEIT));
         } catch (QuantityMeasurementException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenQuantitiesOf0KelvinAnd0CelciusToAdd_shouldThrowException() {
+        try {
+            quantityMeasurement.add(new QuantityMeasurement(0.0, Unit.KELVIN),new QuantityMeasurement(0.0, Unit.FAHRENHEIT),Unit.KELVIN);
+        } catch (QuantityMeasurementException e) {
+            assertEquals(CANNOT_ADD_TEMPERATURE_MEASUREMENTS,e.type);
         }
     }
 
