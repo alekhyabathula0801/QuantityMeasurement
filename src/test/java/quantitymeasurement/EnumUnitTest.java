@@ -24,4 +24,28 @@ public class EnumUnitTest {
         assertEquals(36,value,0.0);
     }
 
+    @Test
+    public void givenCentimetreUnit_shouldReturnInchValue() {
+        double value = Unit.CENTIMETRE.getConversionValue();
+        assertEquals(0.39,value,0.01);
+    }
+
+    @Test
+    public void givenLitreUnit_shouldReturnLitreValue() {
+        double value = Unit.LITRE.getConversionValue();
+        assertEquals(1,value,0.0);
+    }
+
+    @Test
+    public void givenGallonUnit_shouldReturnLitreValue() {
+        double value = Unit.GALLON.getConversionValue();
+        assertEquals(3.78,value,0.0);
+    }
+
+    @Test
+    public void givenMilliLitreUnit_shouldReturnLitreValue() {
+        double value = Unit.MILLILITRE.getConversionValue();
+        assertEquals(0.001,value,0.0);
+    }
+
 }

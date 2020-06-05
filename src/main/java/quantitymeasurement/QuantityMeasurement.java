@@ -6,12 +6,20 @@ public class QuantityMeasurement {
     Unit unit;
 
     public QuantityMeasurement(Double value, Unit unit) {
-        try {
-            this.unit = unit;
-            this.value = value*unit.getConversionValue();
-        } catch (NullPointerException e) {
+        if(value == null)
             throw new QuantityMeasurementException("Entered Null", QuantityMeasurementException.ExceptionType.ENTERED_NULL);
-        }
+        this.unit = unit;
+        this.value = value*unit.getConversionValue();
+    }
+
+    public QuantityMeasurement() {
+    }
+
+    public double add(QuantityMeasurement quantityMeasurement1, QuantityMeasurement quantityMeasurement2) {
+        if(quantityMeasurement1.unit.measurementType != quantityMeasurement2.unit.measurementType)
+            throw new QuantityMeasurementException("Cannot add these measurements",
+                    QuantityMeasurementException.ExceptionType.CANNOT_ADD_THESE_MEASUREMENTS);
+        return quantityMeasurement1.value + quantityMeasurement2.value;
     }
 
     @Override
@@ -19,7 +27,7 @@ public class QuantityMeasurement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement quantityMeasurement = (QuantityMeasurement) o;
-        return Double.compare(Math.round(quantityMeasurement.value*100)/100, Math.round(100*value)/100) == 0 &&
+        return Double.compare(Math.round(quantityMeasurement.value*10000.0)/10000.0, Math.round(value*10000.0)/10000.0) == 0 &&
                 quantityMeasurement.unit.measurementType == unit.measurementType;
     }
 

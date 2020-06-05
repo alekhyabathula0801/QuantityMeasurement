@@ -2,7 +2,7 @@ package quantitymeasurement;
 
 public class QuantityMeasurementException extends RuntimeException {
 
-    enum ExceptionType {ENTERED_NULL,CANT_COMPARE_THESE_UNITS}
+    enum ExceptionType {ENTERED_NULL, CANNOT_ADD_THESE_MEASUREMENTS}
 
     ExceptionType type;
 
