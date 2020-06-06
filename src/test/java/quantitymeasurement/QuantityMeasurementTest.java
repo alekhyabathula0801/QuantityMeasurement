@@ -9,7 +9,7 @@ import static quantitymeasurement.QuantityMeasurementException.ExceptionType.ENT
 
 public class QuantityMeasurementTest {
 
-    QuantityMeasurement quantityMeasurement;
+    IQuantityMeasurement quantityMeasurement;
 
     @Before
     public void setUp() throws Exception {

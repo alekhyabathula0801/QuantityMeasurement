@@ -84,4 +84,28 @@ public class EnumUnitTest {
         assertEquals(1000000,value,0.0);
     }
 
+    @Test
+    public void givenFeetUnit_shouldReturnMeasurementType() {
+        String measurementType = Unit.FEET.getMeasurementType();
+        assertEquals("LENGTH",measurementType);
+    }
+
+    @Test
+    public void givenGramUnit_shouldReturnMeasurementType() {
+        String measurementType = Unit.GRAM.getMeasurementType();
+        assertEquals("MASS",measurementType);
+    }
+
+    @Test
+    public void givenLitreUnit_shouldReturnMeasurementType() {
+        String measurementType = Unit.LITRE.getMeasurementType();
+        assertEquals("VOLUME",measurementType);
+    }
+
+    @Test
+    public void givenKelvinUnit_shouldReturnMeasurementType() {
+        String measurementType = Unit.KELVIN.getMeasurementType();
+        assertEquals("TEMPERATURE",measurementType);
+    }
+
 }

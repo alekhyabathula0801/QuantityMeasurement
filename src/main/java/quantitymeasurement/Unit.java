@@ -3,7 +3,7 @@ package quantitymeasurement;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Unit {
+public enum Unit implements IUnit {
 /*
     Base Unit for Length is millimetre
     Base Unit for Volume is millilitre
@@ -15,8 +15,8 @@ public enum Unit {
     MILLILITRE("VOLUME",1.0), GRAM("MASS",1.0), KILOGRAM("MASS",1000.0), TONNE("MASS",1000000.0),
     KELVIN("TEMPERATURE",1.0,0.0,0.0), CELCIUS("TEMPERATURE",1.0,273.15,0.0), FAHRENHEIT("TEMPERATURE",5.0/9.0,-32.0,273.15);
 
-    final String measurementType;
-    private List<Double> conversionValue;
+    private final String measurementType;
+    private final List<Double> conversionValue;
 
     Unit(String measurementType,Double... conversionValue) {
         this.measurementType = measurementType;
@@ -31,6 +31,10 @@ public enum Unit {
 
     public Double getConversionValue() {
         return conversionValue.get(0);
+    }
+
+    public String getMeasurementType() {
+        return measurementType;
     }
 
 }
