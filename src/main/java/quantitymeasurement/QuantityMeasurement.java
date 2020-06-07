@@ -21,11 +21,25 @@ public class QuantityMeasurement implements IQuantityMeasurement{
                                                    QuantityMeasurementException.ExceptionType.CANNOT_ADD_GIVEN_MEASUREMENTS);
         if(unit.getMeasurementType() != quantityMeasurement2.unit.getMeasurementType())
             throw new QuantityMeasurementException("Cannot convert to given Unit",
-                                                   QuantityMeasurementException.ExceptionType.CANNOT_CONVERT_TO_GIVEN_UNIT);
+                                                   QuantityMeasurementException.ExceptionType.INVALID_CONVERSION);
         if(quantityMeasurement2.unit.getMeasurementType().equals("TEMPERATURE"))
             throw new QuantityMeasurementException("Cannot convert to given Unit",
                                                    QuantityMeasurementException.ExceptionType.CANNOT_ADD_TEMPERATURE_MEASUREMENTS);
         return (quantityMeasurement1.value + quantityMeasurement2.value)/unit.getConversionValue();
+    }
+
+    public double convert(double value, Unit unit1, Unit unit2) {
+        if(unit1.getMeasurementType() != unit2.getMeasurementType())
+            throw new QuantityMeasurementException("Invalid conversion",
+                                                    QuantityMeasurementException.ExceptionType.INVALID_CONVERSION);
+        if(unit1.getMeasurementType() != "TEMPERATURE")
+            return unit1.getConvertedValue(value,unit1)/unit2.getConversionValue();
+        double kelvinValue = unit1.getConvertedValue(value,unit1);
+        if(unit2.equals(Unit.FAHRENHEIT))
+            return TemperatureConversion.FAHRENHEIT.getConvertedValue(kelvinValue);
+        if(unit2.equals(Unit.CELCIUS))
+            return TemperatureConversion.CELCIUS.getConvertedValue(kelvinValue);
+        return kelvinValue;
     }
 
     @Override
@@ -33,8 +47,8 @@ public class QuantityMeasurement implements IQuantityMeasurement{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement quantityMeasurement = (QuantityMeasurement) o;
-        return Double.compare(Math.round(quantityMeasurement.value*1000000.0)/1000000.0, Math.round(value*1000000.0)/1000000.0) == 0 &&
-                quantityMeasurement.unit.getMeasurementType() == unit.getMeasurementType();
+        return Double.compare(Math.round(quantityMeasurement.value*1000000.0)/1000000.0,Math.round(value*1000000.0)/1000000.0) == 0 &&
+               quantityMeasurement.unit.getMeasurementType() == unit.getMeasurementType();
     }
 
 }
