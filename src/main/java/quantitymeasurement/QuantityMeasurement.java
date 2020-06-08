@@ -1,9 +1,13 @@
 package quantitymeasurement;
 
+import java.text.DecimalFormat;
+
 public class QuantityMeasurement implements IQuantityMeasurement{
 
     double value;
     IUnit unit;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#.######");
 
     public QuantityMeasurement(Double value, Unit unit) {
         if(value == null)
@@ -47,8 +51,10 @@ public class QuantityMeasurement implements IQuantityMeasurement{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement quantityMeasurement = (QuantityMeasurement) o;
-        return Double.compare(Math.round(quantityMeasurement.value*1000000.0)/1000000.0,Math.round(value*1000000.0)/1000000.0) == 0 &&
-               quantityMeasurement.unit.getMeasurementType() == unit.getMeasurementType();
+        if(quantityMeasurement.unit.getMeasurementType() != unit.getMeasurementType())
+            throw new QuantityMeasurementException("Invalid Measurement types",
+                                         QuantityMeasurementException.ExceptionType.CANNOT_COMPARE_GIVEN_MEASUREMENTS);
+        return Double.parseDouble(decimalFormat.format(quantityMeasurement.value)) - Double.parseDouble(decimalFormat.format(value)) == 0.0;
     }
 
 }

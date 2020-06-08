@@ -37,6 +37,16 @@ public class QuantityMeasurementTest {
     }
 
     @Test
+    public void givenNullObject_shouldThrowException() {
+        try {
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(0.0, Unit.FEET);
+            assertNotEquals(quantityMeasurement1,null);
+        } catch (QuantityMeasurementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void givenNullQuantityOfFeet_shouldThrowException() {
         try {
             QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(0.0, Unit.FEET);
@@ -332,7 +342,7 @@ public class QuantityMeasurementTest {
         try {
             assertNotEquals(new QuantityMeasurement(0.0, Unit.LITRE),new QuantityMeasurement(0.0, Unit.INCH));
         } catch (QuantityMeasurementException e) {
-            e.printStackTrace();
+            assertEquals(CANNOT_COMPARE_GIVEN_MEASUREMENTS,e.type);
         }
     }
 
@@ -341,7 +351,7 @@ public class QuantityMeasurementTest {
         try {
             assertNotEquals(new QuantityMeasurement(1.0, Unit.LITRE),new QuantityMeasurement(1.0, Unit.INCH));
         } catch (QuantityMeasurementException e) {
-            e.printStackTrace();
+            assertEquals(CANNOT_COMPARE_GIVEN_MEASUREMENTS,e.type);
         }
     }
 
